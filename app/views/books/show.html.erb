@@ -14,15 +14,52 @@
           <td>
             <%= @book.body %>
           </td>
+          <td>
+            コメント数：<%= @book.book_comments.count %>
+          </td>
           <% if current_user.id == @book.user.id %>
           <td>
             <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
           </td>
           <td>
-            <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "本当に削しますか？" }, class: "btn btn-danger" %>
+            <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %>
           </td>
           <% end %>
         </tr>
     </table>
+    <div class="row">
+      <div class="col-lg-8">
+        <h3 class="border-bottom">Comments</h3>
+        <% if @book.book_comments.present? %>
+          <% @book.book_comments.each do |book_comment| %>
+            <div class="card mb-3" style="border: none;">
+              <div class="row no-gutters">
+                <div class="col-md-2 comment-card-image-cover">
+                  <%= attachment_image_tag book_comment.user, :profile_image, fallback: "no_image.jpg", class: "comment-card-image" %><br>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body comment-card-body"> 
+                    <h5 class="card-title"><%= book_comment.user.name %></h5>
+                    <p class="card-text"><%= book_comment.user.introduction %></p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <%= link_to "Destroy", book_book_comment_path(book_id: @book.id, id: book_comment.id), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="no-content text-muted text-center pb-4 pt-3">
+            <span>コメントはありません。</span>
+          </div>
+        <% end %>
+        <%= form_with model: @book_comment, url: book_book_comments_path(book_id: @book.id), local: true do |f| %>
+          <%= f.text_area :body, class: "form-control", rows: "3" %>
+          <%= f.submit "投稿", class: "btn btn-success book-comment-submit" %>
+        <% end %>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
 </div>
