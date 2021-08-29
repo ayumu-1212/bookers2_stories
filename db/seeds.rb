@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+24.times do |n|
+  name = Faker::JapaneseMedia::StudioGhibli.character
+  introduction = Faker::JapaneseMedia::StudioGhibli.quote
+  email = Faker::Internet.email
+  user = User.create(
+    name: name,
+    email: email,
+    password: "password",
+    introduction: introduction
+  )
+  book_amount = rand(1..5)
+  book_amount.times do |i|
+    title = Faker::Movie.title
+    body = Faker::Movie.quote
+    Book.create(
+      title: title,
+      body: body,
+      user_id: user.id
+    )
+  end
+end

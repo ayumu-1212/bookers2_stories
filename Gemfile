@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem "pry-rails"
 end
 
 group :test do
@@ -68,3 +69,9 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 gem 'rename'
+
+# seed用データサンプル(英)
+gem 'faker'
+
+# seed用データサンプル(和)
+gem "gimei"
