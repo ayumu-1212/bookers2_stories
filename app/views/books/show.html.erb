@@ -1,0 +1,28 @@
+<div class="row">
+  <%= render "layouts/sidebar" %>
+  <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table">
+        <tr>
+          <td>
+            <%= attachment_image_tag @book.user, :profile_image, fallback: "no_image.jpg", size:'40x40', class: "mainbar-profile-image" %><br>
+            <%= link_to @book.user.name, user_path(@book.user) %>
+          </td>
+          <td>
+            <%= link_to @book.title, book_path(@book.id) %>
+          </td>
+          <td>
+            <%= @book.body %>
+          </td>
+          <% if current_user.id == @book.user.id %>
+          <td>
+            <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "本当に削しますか？" }, class: "btn btn-danger" %>
+          </td>
+          <% end %>
+        </tr>
+    </table>
+  </div>
+</div>
