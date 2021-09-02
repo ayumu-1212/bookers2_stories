@@ -29,3 +29,4 @@ require 'faker'
     )
   end
 end
+User.create(name: "abe", email: "abe@abe", password: "abeabe")
