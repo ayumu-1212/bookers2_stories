@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   before_action :identity_verification, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    # 直近1週間でのいいね数でソート(降順)
+    @books = Book.all.sort_by{|book| book.favorites.where("created_at > ?", Time.now.ago(7.days).beginning_of_day).count }.reverse
   end
 
   def show
