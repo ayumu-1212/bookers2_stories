@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def date_search
+    user = User.find(params[:id])
+    @time = Time.parse(params[:created_at])
+    @count = user.books.where(created_at: @time..@time.end_of_day).count
+  end
 
   def set_variable
     @new_book = Book.new
