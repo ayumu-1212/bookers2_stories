@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @data = []
+    gon.data = []
+    7.times do |i|
+      @data[i] = @books.where(created_at: Time.now.ago(i.days).beginning_of_day..Time.now.ago(i.days).end_of_day).count
+    end
+    @data.reverse!
+    gon.data = @data
   end
 
   def index

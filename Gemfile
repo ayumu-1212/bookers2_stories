@@ -75,3 +75,9 @@ gem 'faker'
 
 # seed用データサンプル(和)
 gem "gimei"
+
+# グラフ記載
+gem 'chart-js-rails', '~> 0.1.4'
+
+# jsにデータを渡す
+gem 'gon', '~> 6.2.0'
