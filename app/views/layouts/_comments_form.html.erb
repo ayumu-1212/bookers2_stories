@@ -1,0 +1,9 @@
+<%= form_with model: book_comment, url: book_book_comments_path(book_id: book.id), remote: true, :html => {class:"needs-validation", novalidate: true} do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", id: "book_comment_textarea", rows: "3", required: true %>
+    <div class="invalid-feedback">
+      コメントを入力してください。
+    </div>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-success book-comment-submit" %>
+<% end %>
