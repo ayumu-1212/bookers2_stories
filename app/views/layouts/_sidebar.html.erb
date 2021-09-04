@@ -33,9 +33,10 @@
         <i class="fas fa-user-cog"></i>
       <% end %>
     <% elsif user.followed_by?(current_user) %>
-      <%= link_to "フォロー外す", relationship_destroy_path(follow_id: user.id), method: :delete, class: "btn btn-outline-info btn-block" %>
+      <%= link_to "フォロー外す", relationship_destroy_path(follow_id: user.id), method: :delete, class: "btn btn-outline-info btn-block md-harf" %>
+      <%= link_to "chatをはじめる", chats_path(opponent_id: user.id), method: :post, class: "d-block p-2 md-harf" %>
     <% else %>
-      <%= link_to "フォローする", relationship_create_path(follow_id: user.id), method: :post, class: "btn btn-outline-success btn-block" %>
+      <%= link_to "フォローする", relationship_create_path(follow_id: user.id), method: :post, class: "btn btn-success btn-block md-harf" %>
     <% end %>
   </div>
   <div class="row">

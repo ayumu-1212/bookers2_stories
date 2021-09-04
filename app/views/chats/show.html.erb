@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="d-flex flex-column chats-wrap">
+      <h2><%= @opponent.name %>さんとのチャット</h2>
+      <div class="chats-box overflow-auto" id="chats-box">
+        <%= render "chats/index", chat_messages: @chat_messages %>
+      </div>
+    </div>
+    <div class="chat-form-wrap">
+      <%= form_with model: @new_chat_message, url: chat_message_path(chat_room_id: @chat_room.id), remote: true, class: "chat-form" do |f| %>
+        <%= f.text_field :body, class: "form-control", autofocus: true, id: "chat-form-field" %>
+        <%= f.submit "送信", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>

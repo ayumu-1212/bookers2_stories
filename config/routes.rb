@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     end
   end
   
+  get "/chats/:id" => "chats#show", as: "chat"
+  post "/chats/:opponent_id" => "chats#create", as: "chats"
+  post "/chats/message/:chat_room_id" => "chats#create_message", as: "chat_message"
+  
   # relationship
   post "relationships/:follow_id" => "relationships#create", as: "relationship_create"
   delete "relationships/:follow_id" => "relationships#destroy", as: "relationship_destroy"
