@@ -104,42 +104,49 @@
       </tbody>
     </table>
     <canvas id="myLineChart"></canvas>
+    <%= form_with url: date_search_user_path(@user), class: "d-flex", remote: true do |f| %>
+      <%= f.date_field :created_at, class: "form-control date-search-form" %>
+      <%= f.submit "検索", class: "btn btn-info" %>
+    <% end %>
+    <div id="date-search-result"></div>
   </div>
 </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-  <script>
-  var ctx = document.getElementById("myLineChart");
-  var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
-      datasets: [
-        {
-          label: '投稿した本の数',
-          data: gon.data,
-          borderWidth: 3,
-          borderColor: "rgba(255,0,0,1)",
-          pointBackgroundColor: "rgba(255,0,0,1)",
-          backgroundColor: "rgba(0,0,0,0)"
-        }
-      ],
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<script>
+var ctx = document.getElementById("myLineChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+    datasets: [
+      {
+        label: '投稿した本の数',
+        data: gon.data,
+        borderWidth: 3,
+        borderColor: "rgba(255,0,0,1)",
+        pointBackgroundColor: "rgba(255,0,0,1)",
+        backgroundColor: "rgba(0,0,0,0)"
+      }
+    ],
+  },
+  options: {
+    title: {
+      display: true,
+      text: '7日間の投稿数の比較'
     },
-    options: {
-      title: {
-        display: true,
-        text: '7日間の投稿数の比較'
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            suggestedMax: 10,
-            suggestedMin: 0,
-            stepSize: 1
-          }
-        }]
-      },
-    }
-  });
-  </script>
+    scales: {
+      yAxes: [{
+        ticks: {
+          suggestedMax: 10,
+          suggestedMin: 0,
+          stepSize: 1
+        }
+      }]
+    },
+  }
+});
+</script>
