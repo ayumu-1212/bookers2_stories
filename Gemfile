@@ -75,3 +75,6 @@ gem 'faker'
 
 # seed用データサンプル(和)
 gem "gimei"
+
+# PV数測定
+gem 'impressionist', '~>1.6.1'

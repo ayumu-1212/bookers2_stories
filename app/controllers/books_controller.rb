@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_variable, only: [:index, :show]
   before_action :identity_verification, only: [:edit, :update, :destroy]
+  impressionist actions: [:show]  #PV数測定
 
   def index
     @books = Book.all
