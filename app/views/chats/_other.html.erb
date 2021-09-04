@@ -1,0 +1,8 @@
+<div class="chat-message-box other-message-box">
+  <div class="other-message-content chat-message-content">
+    <%= chat_message.body %>
+  </div>
+  <div class="chat-time">
+    <span><%= chat_message.created_at.strftime("%Y/%-m/%-d %H:%M") %></span>
+  </div>
+</div>

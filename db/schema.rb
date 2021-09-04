@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_29_082203) do
+ActiveRecord::Schema.define(version: 2021_09_02_101048) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "user_id"
@@ -28,9 +28,36 @@ ActiveRecord::Schema.define(version: 2021_08_29_082203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chat_messages", force: :cascade do |t|
+    t.integer "chat_room_id"
+    t.integer "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follow_id"
+    t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "room_users", force: :cascade do |t|
+    t.integer "chat_room_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

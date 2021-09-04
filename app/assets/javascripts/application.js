@@ -18,6 +18,13 @@
 //= require turbolinks
 //= require_tree .
 
+
+// チャットのトークをいちばん下に
+document.addEventListener("turbolinks:load", function() {
+  const chatsBox = document.getElementById("chats-box");
+  chatsBox.scrollTo(0, chatsBox.scrollHeight);
+});
+
 // formのvalidation
 (function() {
   'use strict';

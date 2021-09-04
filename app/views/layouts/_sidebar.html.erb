@@ -1,23 +1,42 @@
 <div class="col-md-3">
   <div class="row">
     <h3>User Info</h3>
-    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:'100x100', class: "sidebar-profile-image" %>
+    <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", size:'100x100', class: "sidebar-profile-image" %>
     <table class="table">
       <tr>
         <th>name</th>
         <th>
-          <%= @user.name %>
+          <%= user.name %>
         </th>
       </tr>
       <tr>
         <th>introduction</th>
         <th>
-          <%= @user.introduction %>
+          <%= user.introduction %>
+        </th>
+      </tr>
+      <tr>
+        <th>follows</th>
+        <th>
+          <%= link_to user.follow_users.count, follows_user_path(user.id) %>
+        </th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th>
+          <%= link_to user.follower_users.count, followers_user_path(user.id) %>
         </th>
       </tr>
     </table>
-    <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
+    <% if user == current_user %>
+      <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% elsif user.followed_by?(current_user) %>
+      <%= link_to "フォロー外す", relationship_destroy_path(follow_id: user.id), method: :delete, class: "btn btn-outline-info btn-block md-harf" %>
+      <%= link_to "chatをはじめる", chats_path(opponent_id: user.id), method: :post, class: "d-block p-2 md-harf" %>
+    <% else %>
+      <%= link_to "フォローする", relationship_create_path(follow_id: user.id), method: :post, class: "btn btn-success btn-block md-harf" %>
     <% end %>
   </div>
   <div class="row">
@@ -25,7 +44,7 @@
       <h3>New book</h3>
     </div>
     <div class="new-book-form">
-      <%= form_with model: @new_book, url: books_path, local:true do |f| %>
+      <%= form_with model: new_book, url: books_path, local:true do |f| %>
         <p class="new-book-form-title">Title</p>
         <%= f.text_field :title, class: "new-book-formfield" %>
         <p class="new-book-form-title">Body</p>

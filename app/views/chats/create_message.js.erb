@@ -1,0 +1,4 @@
+$('#chat-form-field').val('')
+$('#chats-box').html("<%= j(render 'chats/index', chat_messages: @chat_messages) %>")
+var chatsBox = document.getElementById("chats-box");
+chatsBox.scrollTo(0, chatsBox.scrollHeight);
