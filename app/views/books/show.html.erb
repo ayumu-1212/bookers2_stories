@@ -20,6 +20,9 @@
           <td>
             コメント数：<%= @book.book_comments.count %>
           </td>
+          <td>
+            閲覧数：<%= @book.impressionist_count %>
+          </td>
           <% if current_user.id == @book.user.id %>
           <td>
             <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
