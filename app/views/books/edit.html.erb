@@ -15,17 +15,22 @@
     <div class="edit-user-form">
       <%= form_with model: @book, url: book_path(@book), local:true do |f| %>
         <p>Title</p>
-        <%= f.text_field :title, class: "edit-user-formfield" %>
+        <%= f.text_field :title, class: "form-control" %>
         <p>Opinion</p>
-        <%= f.text_area :body, class: "edit-user-formfield" %>
+        <%= f.text_area :body, class: "form-control" %>
+        <div id="star-rate-<%= @book.id %>" class="my-3"></div>
         <%= f.submit 'Update Book', class: "btn btn-success btn-block" %>
       <% end %>
-    </div>
-    <div>
-      <%= link_to "Show", book_path(@book), class: "link" %>
-      <span> | </span>
-      <%= link_to "Back", books_path, class: "link" %>
     </div>
   </div>
   <div class="col-md-2"></div>
 </div>
+
+<script>
+  $('#star-rate-<%= @book.id %>').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    readOnly: true,
+    score: "<%= @book.rate %>"
+  });
+</script>

@@ -25,7 +25,8 @@ require 'faker'
     Book.create(
       title: title,
       body: body,
-      user_id: user.id
+      user_id: user.id,
+      rate: rand(1..5)
     )
   end
 end
