@@ -14,4 +14,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
+  
+  def join?(group)
+    self.groups.include?(group) || group.owner_id == self.id
+  end
 end

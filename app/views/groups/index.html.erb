@@ -27,6 +27,10 @@
             <td>
               <% if group.owner_id == current_user.id %>
                 <%= link_to "Edit", edit_group_path(group.id), class: "btn btn-success" %>
+              <% elsif current_user.join?(group) %>
+                <%= link_to "Leave this group", leave_group_path(group.id), method: :delete, class: "btn btn-outline-danger" %>
+              <% else %>
+                <%= link_to "Join this group", join_group_path(group.id), method: :post, class: "btn btn-outline-success" %>
               <% end %>
             </td>
           </tr>

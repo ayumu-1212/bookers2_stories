@@ -8,6 +8,7 @@
           <th></th>
           <th>グループ名</th>
           <th>紹介文</th>
+          <th>メンバー</th>
           <th></th>
         </tr>
       </thead>
@@ -23,8 +24,21 @@
             <%= @group.introduction %>
           </td>
           <td>
+            <% if @group.users.present? %>
+              <%= @group.users[0].name if @group.users[0].present? %><br>
+              <%= @group.users[1].name if @group.users[1].present? %><br>
+              <%= "他" + (@group.users.count - 2).to_s + "名" if @group.users[2].present? %></p>
+            <% else %>
+              メンバーなし
+            <% end %>
+          </td>
+          <td>
             <% if @group.owner_id == current_user.id %>
               <%= link_to "Edit", edit_group_path(@group.id), class: "btn btn-success" %>
+            <% elsif current_user.join?(@group) %>
+              <%= link_to "Leave this group", leave_group_path(@group.id), method: :delete, class: "btn btn-outline-danger" %>
+            <% else %>
+              <%= link_to "Join this group", join_group_path(@group.id), method: :post, class: "btn btn-outline-success" %>
             <% end %>
           </td>
         </tr>
