@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_052608) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.integer "introduction"
+    t.text "introduction"
     t.string "image_id"
     t.integer "owner_id"
     t.datetime "created_at", null: false

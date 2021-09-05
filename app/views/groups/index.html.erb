@@ -1,7 +1,8 @@
 <div class="row">
-  <%= render "layouts/sidebar" %>
+  <%= render "layouts/sidebar", user: current_user, new_book: @new_book %>
   <div class="col-md-8 offset-md-1">
     <h2>Groups</h2>
+    <%= link_to "グループを作成する", new_group_path %>
     <table class="table">
       <thead>
         <tr>
@@ -18,7 +19,7 @@
               <%= attachment_image_tag group, :image, fallback: "no_image.jpg", size:'40x40', class: "mainbar-profile-image" %>
             </td>
             <td>
-              <%= group.name %>
+              <%= link_to group.name, group_path(group) %>
             </td>
             <td>
               <%= group.introduction %>

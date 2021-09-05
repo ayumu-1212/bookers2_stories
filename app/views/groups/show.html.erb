@@ -1,0 +1,34 @@
+<div class="row">
+  <%= render "layouts/sidebar", user: @user, new_book: @new_book %>
+  <div class="col-md-8 offset-md-1">
+    <h2>Group details</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>紹介文</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= attachment_image_tag @group, :image, fallback: "no_image.jpg", size:'40x40', class: "mainbar-profile-image" %>
+          </td>
+          <td>
+            <%= @group.name %>
+          </td>
+          <td>
+            <%= @group.introduction %>
+          </td>
+          <td>
+            <% if @group.owner_id == current_user.id %>
+              <%= link_to "Edit", edit_group_path(@group.id), class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

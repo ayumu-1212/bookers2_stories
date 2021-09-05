@@ -13,7 +13,7 @@
       </div>
     <% end %>
     <div class="edit-user-form">
-      <%= form_with model: @group, url: groups_path, local:true do |f| %>
+      <%= form_with model: @group, url: group_path(@group), local:true do |f| %>
         <p>グループ名</p>
         <%= f.text_field :name, class: "edit-user-formfield form-control" %>
         <p>紹介文</p>

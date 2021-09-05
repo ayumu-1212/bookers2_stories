@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
   
   def new
     @new_group = Group.new
@@ -17,10 +18,13 @@ class GroupsController < ApplicationController
   
   def index
     @groups = Group.all
+    @new_book = Book.new
   end
   
   def show
     @group = Group.find(params[:id])
+    @new_book = Book.new
+    @user = @group.owner
   end
   
   def edit
