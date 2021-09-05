@@ -58,3 +58,29 @@
 .edit-user-formfield {
   margin-bottom: 10px;
 }
+
+.book-comment-submit {
+  margin: 20px auto 0;
+  display: block;
+  padding: 0 3rem;
+}
+
+.comment-card-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.comment-card-image-cover {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-card-body {
+  padding: 0.25rem;
+}
+
+.comment-title {
+  border-bottom: solid;
+  border-color: gray;
+}
