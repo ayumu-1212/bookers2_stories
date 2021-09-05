@@ -1,5 +1,6 @@
 <div class="row">
-  <% if @new_book.errors.any? %>
+  <div class="col-sm-12">
+    <% if @new_book.errors.any? %>
       <div class="error-messages">
         <h3 class="error-message-title"><%= @new_book.errors.count %> error prohibited this obj from being saved:</h3>
         <% @new_book.errors.full_messages.each do |message| %>
@@ -7,6 +8,9 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+</div>
+<div class="row">
   <%= render "layouts/sidebar", user: @user, new_book: @new_book %>
   <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
