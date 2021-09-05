@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users
+  
+  has_many :owner_groups, class_name: "Group", foreign_key: "owner_id"
+  
   attachment :profile_image
 
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}

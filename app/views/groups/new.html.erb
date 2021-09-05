@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="edit-user-title">
+      <h3>Create Group</h3>
+    </div>
+    <% if @new_group.errors.any? %>
+      <div class="error-messages">
+        <h3 class="error-message-title"><%= @new_group.errors.count %> error prohibited this obj from being saved:</h3>
+        <% @new_group.errors.full_messages.each do |message| %>
+          <li class="error-message-content"><%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="edit-user-form">
+      <%= form_with model: @new_group, url: groups_path, local:true do |f| %>
+        <p>グループ名</p>
+        <%= f.text_field :name, class: "edit-user-formfield form-control" %>
+        <p>紹介文</p>
+        <%= f.text_area :introduction, class: "edit-user-formfield form-control" %>
+        <p>グループ画像</p>
+        <%= f.attachment_field :image, class: "edit-user-formfield" %>
+        <%= f.submit 'Create Group', class: "btn btn-info btn-block" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
