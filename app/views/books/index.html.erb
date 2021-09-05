@@ -14,6 +14,11 @@
   <%= render "layouts/sidebar", user: @user, new_book: @new_book %>
   <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
+    <div>
+      <%= link_to "新しい順", books_path(type: "time") %>
+      <span> | </span>
+      <%= link_to "評価の高い順", books_path(type: "rate") %>
+    </div>
     <table class="table">
       <thead>
         <tr>

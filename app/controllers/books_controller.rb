@@ -4,7 +4,13 @@ class BooksController < ApplicationController
   before_action :identity_verification, only: [:edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    if params[:type] == "time"
+      @books = Book.order(updated_at: :desc)
+    elsif params[:type] == "rate"
+      @books = Book.order(rate: :desc)
+    else
+      @books = Book.all
+    end
   end
 
   def show
