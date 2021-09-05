@@ -104,7 +104,7 @@
       </tbody>
     </table>
     <canvas id="myLineChart"></canvas>
-    <%= form_with url: date_search_user_path(@user), class: "d-flex", remote: true do |f| %>
+    <%= form_with url: date_search_user_path(@user), class: "d-flex mt-3", remote: true do |f| %>
       <%= f.date_field :created_at, class: "form-control date-search-form" %>
       <%= f.submit "検索", class: "btn btn-info" %>
     <% end %>
