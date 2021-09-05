@@ -20,6 +20,8 @@
           <td>
             コメント数：<%= @book.book_comments.count %>
           </td>
+          <td class="review-rating" data-score="<%= @book.rate %>">
+          </td>
           <% if current_user.id == @book.user.id %>
           <td>
             <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>

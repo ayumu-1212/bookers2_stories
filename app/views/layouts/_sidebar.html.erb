@@ -30,8 +30,20 @@
         <%= f.text_field :title, class: "new-book-formfield" %>
         <p class="new-book-form-title">Body</p>
         <%= f.text_area :body, class: "new-book-formfield" %>
+        <div id="rating-form">
+          <p class="d-inline-block">Rate：</p>
+          <%= f.hidden_field :rate, :value => 'score' %>
+        </div>
         <%= f.submit 'Create Book', class: "btn btn-success btn-block" %>
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+  $('#rating-form').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    scoreName: 'product_comment[rate]'
+  });
+</script>

@@ -16,6 +16,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery_raty.js
 //= require_tree .
 
 // formのvalidation
