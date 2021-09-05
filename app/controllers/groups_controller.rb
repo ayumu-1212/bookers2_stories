@@ -64,7 +64,6 @@ class GroupsController < ApplicationController
     @new_event_notice.group_id = @group.id
     if @new_event_notice.save
       EventNoticeMailer.send_to_group_members(@new_event_notice).deliver
-      flash[:notice] = "送信が完了しました"
       redirect_to complete_notice_group_path(@new_event_notice)
     else
       render :new_notice
