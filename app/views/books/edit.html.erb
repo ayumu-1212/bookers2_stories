@@ -18,6 +18,8 @@
         <%= f.text_field :title, class: "form-control" %>
         <p>Opinion</p>
         <%= f.text_area :body, class: "form-control" %>
+        <p class="new-book-form-title">Category</p>
+        <%= f.text_field :tag_list, value: @book.tag_list.join(","), class: "new-book-formfield" %>
         <div id="star-rate-<%= @book.id %>" class="my-3"></div>
         <%= f.submit 'Update Book', class: "btn btn-success btn-block" %>
       <% end %>

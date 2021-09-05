@@ -30,6 +30,8 @@
         <%= f.text_field :title, class: "new-book-formfield" %>
         <p class="new-book-form-title">Body</p>
         <%= f.text_area :body, class: "new-book-formfield" %>
+        <p class="new-book-form-title">Category</p>
+        <%= f.text_field :tag_list, value: new_book.tag_list.join(","), class: "new-book-formfield" %>
         <div id="rating-form">
           <p class="d-inline-block">Rate：</p>
           <%= f.hidden_field :rate %>

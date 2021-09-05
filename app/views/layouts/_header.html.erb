@@ -23,6 +23,10 @@
             <%= link_to "logout", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt text-light" %>
           </li>
         </ul>
+        <%= form_with url: books_path, class: "form-inline", method: :get, local: true do |f| %>
+          <%= f.select :tag_name, Book.tag_counts.pluck(:name), include_blank: true, class: "form-control mr-sm-2" %>
+          <%= f.submit "Search", class: "btn btn-outline-success my-2 my-sm-0 mx-2" %>
+        <% end %>
       <% else %>
         <ul class="navbar-nav">
           <li class="nav-item">

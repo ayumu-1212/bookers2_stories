@@ -75,3 +75,6 @@ gem 'faker'
 
 # seed用データサンプル(和)
 gem "gimei"
+
+# tag機能
+gem 'acts-as-taggable-on', '~> 6.0'

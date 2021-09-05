@@ -4,7 +4,9 @@ class BooksController < ApplicationController
   before_action :identity_verification, only: [:edit, :update, :destroy]
 
   def index
-    if params[:type] == "time"
+    if params[:tag_name]
+      @books = Book.tagged_with(params[:tag_name])
+    elsif params[:type] == "time"
       @books = Book.order(updated_at: :desc)
     elsif params[:type] == "rate"
       @books = Book.order(rate: :desc)
@@ -67,6 +69,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :body, :user_id, :rate)
+    params.require(:book).permit(:title, :body, :user_id, :rate, :tag_list)
   end
 end

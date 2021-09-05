@@ -11,6 +11,12 @@
           <td>
             <%= link_to @book.title, book_path(@book.id) %>
           </td>
+          <td>
+            <%= @book.body %>
+          </td>
+          <td>
+            <%= render "layouts/tag_list", tag_list: @book.tag_list %>
+          </td>
           <td id="favorite_buttons_<%= @book.id %>">
             <%= render "layouts/favorite", book: @book %>
           </td>
