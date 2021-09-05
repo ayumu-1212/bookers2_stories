@@ -75,3 +75,6 @@ gem 'faker'
 
 # seed用データサンプル(和)
 gem "gimei"
+
+# envファイル
+gem 'dotenv-rails'

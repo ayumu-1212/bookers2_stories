@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     member do
       post "join"
       delete "leave"
+      get "new_notice"
+      post "create_notice"
+      get "complete_notice"
     end
   end
   root to: "homes#top"

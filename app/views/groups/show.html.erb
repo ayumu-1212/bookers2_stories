@@ -10,6 +10,9 @@
           <th>紹介文</th>
           <th>メンバー</th>
           <th></th>
+          <% if @group.owner_id == current_user.id %>
+            <th></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +44,11 @@
               <%= link_to "Join this group", join_group_path(@group.id), method: :post, class: "btn btn-outline-success" %>
             <% end %>
           </td>
+          <% if @group.owner_id == current_user.id %>
+            <td>
+              <%= link_to "Notice an Event", new_notice_group_path(@group.id), class: "btn btn-info" %>
+            </td>
+          <% end %>
         </tr>
       </tbody>
     </table>

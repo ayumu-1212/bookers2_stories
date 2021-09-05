@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <h2>送信が完了しました</h2>
+    <p>内容は以下の通りです。</p>
+    <h5>[タイトル]</h5>
+    <p>
+      <bold><%= @event_notice.title %></bold>
+    </p>
+    <h5>[本文]</h5>
+    <p>
+      <bold><%= @event_notice.body %></bold>
+    </p>
+    <h5>[送信先]</h5>
+    <% @users.each do |user| %>
+      <p><%= user.name %></p>
+    <% end %>
+  </div>
+  <div class="col-lg-3"></div>
+</div>

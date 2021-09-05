@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="edit-user-title">
+      <h3>Event Mail</h3>
+    </div>
+    <% if @new_event_notice.errors.any? %>
+      <div class="error-messages">
+        <h3 class="error-message-title"><%= @new_event_notice.errors.count %> error prohibited this obj from being saved:</h3>
+        <% @new_event_notice.errors.full_messages.each do |message| %>
+          <li class="error-message-content"><%= message %></li>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="edit-user-form">
+      <%= form_with model: @new_event_notice, url: create_notice_group_path, local:true do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title, class: "edit-user-formfield form-control" %>
+        <p>Content</p>
+        <%= f.text_area :body, class: "edit-user-formfield form-control" %>
+        <%= f.submit '送信', class: "btn btn-success btn-block" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>

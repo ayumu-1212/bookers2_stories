@@ -10,6 +10,8 @@ class User < ApplicationRecord
   
   has_many :owner_groups, class_name: "Group", foreign_key: "owner_id"
   
+  has_many :event_notices
+  
   attachment :profile_image
 
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}
